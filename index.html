@@ -25,6 +25,50 @@
 
     gtag('config', 'G-KYXBHVSK4B');
     </script>
+    <style>
+        .welcome-freshers {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            z-index: 9999;
+            animation: slideInOut 5s forwards;
+        }
+
+        @keyframes slideInOut {
+            0% {
+                top: -100px;
+                opacity: 1;
+            }
+            50% {
+                top: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+            100% {
+                top: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+            }
+        }
+
+        canvas#my-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9998; /* Adjust z-index so it is behind the welcome message */
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
     <div class="landing">
@@ -46,7 +90,7 @@
                                 Materials
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="semester.html" >Semester 1</a></li>
+                                <li><a class="dropdown-item" href="semester.html">Semester 1</a></li>
                                 <li><a class="dropdown-item" href="semester.html">Semester 2</a></li>
                                 <li><a class="dropdown-item" href="sem3.html">Semester 3</a></li>
                                 <li><a class="dropdown-item" href="sem4.html">Semester 4</a></li>
@@ -55,30 +99,21 @@
                                 <li><a class="dropdown-item" href="sem7.html">Semester 7</a></li>
                             </ul>
                         </li><br>
+
                         <li class="nav-item me-lg-5">
                             <a class="nav-link active" href="Calender.html" target="_blank">Main Calendar 2024-25</a>
                         </li><br>
-                        <!-- <li class="nav-item me-lg-5">
-                            <a class="nav-link btn text-bg-primary text-white border-2" href="cgpa.html" target="_blank">Cgpa Calculator</a>
-                        </li> -->
-                        <!-- <li class="nav-item me-lg-5">
-                            <a class="nav-link active" aria-current="page" href="https://sas.sastra.edu/hallplan/index.php">END SEMESTER HALL PLAN</a>
-                        </li> -->
-                        <!-- <li class="nav-item dropdown me-lg-5">
-                            <li class="nav-item me-lg-5">
-                                <a class="nav-link active" href="https://sastra.edu/cia1/soc/soc_master.html" target="_blank">HALL PLAN</a>
-                            </li><br> -->
-                            <li class="nav-item dropdown me-lg-5">
-                                <a class="nav-link dropdown-toggle btn btn-primary  text-white"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                   Hall Plan CIA-I
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="https://sastra.edu/cia1/soc/soc_master.html" target="_blank">SOC</a></li>
-                                    <li><a class="dropdown-item" href="https://sastra.edu/cia1/seee/seee_master.html" target="_blank">SEE</a></li>
-
-                                </ul><br>
                         <li class="nav-item dropdown me-lg-5">
-                            <a class="nav-link dropdown-toggle btn btn-success  text-white" href="https://docs.google.com/forms/d/e/1FAIpQLSfkD17LJ-flF0bp2K0j-fFRoT7Tp2WylV--S4ZoL-2hbBKjcg/viewform?usp=sf_link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle btn btn-primary text-white" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                               Hall Plan CIA-I
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="https://sastra.edu/cia1/soc/soc_master.html" target="_blank">SOC</a></li>
+                                <li><a class="dropdown-item" href="https://sastra.edu/cia1/seee/seee_master.html" target="_blank">SEE</a></li>
+                            </ul><br>
+                        </li>
+                        <li class="nav-item dropdown me-lg-5">
+                            <a class="nav-link dropdown-toggle btn btn-success text-white" href="https://docs.google.com/forms/d/e/1FAIpQLSfkD17LJ-flF0bp2K0j-fFRoT7Tp2WylV--S4ZoL-2hbBKjcg/viewform?usp=sf_link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Utilities
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -86,11 +121,7 @@
                                 <li><a class="dropdown-item" href="https://unitastic.netlify.app/externals" target="_blank">External Marks Calculator</a></li>
                                 <li><a class="dropdown-item" href="https://unitastic.netlify.app/attendance" target="_blank">Estimate Class Skips</a></li>
                             </ul>
-<!--                         </li>
-                        <li class="nav-item me-lg-5 mt-lg-0 mt-3">
-                            <!-- pill button -->
-<!--                             <a class="nav-link btn  text-white" href="About us/index.html">About Us</a> -->
-<!--                         </li> -->
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -104,11 +135,12 @@
                         <p>Hello Sastraites! Welcome to Material Base where you can find all materials which are useful for your semester preparation. Basically we plan to bring all the materials which are provided by various faculty.</p>
                         <a href="semester.html" class="btn btn-primary">Get Started</a>
                     </div>
-                    <a href='https://play.google.com/store/apps/details?id=com.materialbase.materialbase&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' style="height:20%;"/></a>
+                    <a href='https://play.google.com/store/apps/details?id=com.materialbase.materialbase&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+                        <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' style="height:20%;"/>
+                    </a>
                 </div>
             </div>
-        </div>
-        
+        </div><hr>
     </div>
     <div class="container px-4 mt-5">
         <div class="row gx-5 gy-3 mt-5">
@@ -128,100 +160,67 @@
             </div>
             <div class="col-lg-3 col-md-6 text-center">
                 <div class="bg-white rounded-5 shadow p-3" style="cursor: pointer;" onclick="window.location.href='#'">
-                    <img src="images/ppt.png" alt="pdf" style="width: 44%;" />
-                    <h3>Any PPTs</h3>
+                    <img src="images/ppt.png" alt="pdf" style="width: 50%;" />
+                    <h3>Any Videos</h3>
                     <p>for you!!</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
-                <div class="bg-white rounded-5 shadow p-3" style="cursor: pointer;" onclick="window.location.href='papers.html'">
-                    <img src="images/checklist.png" alt="pdf" style="width: 26%;" />
-                    <h3>Any Papers</h3>
+                <div class="bg-white rounded-5 shadow p-3" style="cursor: pointer;" onclick="window.location.href='#'">
+                    <img src="images/checklist.png" alt="pdf" style="width: 25%;" />
+                    <h3>Any Notes</h3>
                     <p>for you!!</p>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
-<script>
-  /* paste this line in verbatim */
-  window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)};
-  /* customize formbutton below*/     
-  formbutton("create", {
-    action: "https://formspree.io/f/xzbleaor",
-    title: "Feedback",
-    description: "Report if you found any materials missing or needed!!",
-    fields: [
-      { 
-        type: "email", 
-        label: "Email:", 
-        name: "email",
-        required: true,
-        placeholder: "your@email.com"
-      },
-      {
-        type: "textarea",
-        label: "Message:",
-        name: "message",
-        placeholder: "Tell us",
-      },
-      { type: "submit" }      
-    ],
-    styles: {
-      title: {
-        backgroundColor: "gray"
-      },
-      button: {
-        backgroundColor: "gray"
-      }
-    }
-  });
-</script>
-
     <footer class="mt-5 text-center p-3 shadow bg-white">
-        <p>&copy; Material Base 2023. All rights reserved.</p>
-        <p>Content curated from <a href="https://instagram.com/materialhub_sastra">Material Hub</a>.</p>
+        <p>&copy; Material Base 2024. All rights reserved.</p>
+        <p>Content curated from <a href="https://instagram.com/materialhub_sastra">Material Hub</a> and <a href="https://www.sastra.edu">Sastra University</a>.</p>
     </footer>
-    <!-- <div class="whatsapp-btn bg-white p-3 rounded-circle animate__animated animate__tada animate__delay-4s" style="position: fixed; bottom: 20px; right: 20px; cursor: pointer;" onclick="window.location.href='https://wa.me/917702150488'">
-        <img src="images/WhatsApp.svg" width="40">
-    </div> -->
+
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">TERMS OF SERVICE</h1>
+                    <h5 class="modal-title" id="exampleModalLabel">Welcome to Material Base!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Last Edit 19/02/2023
-                    <br>
-                    We had updated our terms of service.
-                    This Website is not officially appoved or organised by university.
-                    Material Base is not responsible if any "INCORRECT CONTENT" provided in materials.If any INCORRECT CONTENT found please report us immediately.<br>
-                    <p>Read all terms of service before accepting!!</p>
+                    We're glad to have you here. Enjoy exploring our materials and resources to excel in your studies!
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="setModalCookie()">Accept</button>
+                    <button type="button" class="btn btn-primary" onclick="setModalCookie()" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="welcome-freshers">Welcome Freshers!</div>
+    <canvas id="my-canvas"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
     <script>
-        window.onload = function() {
-            // if cookie exists, dont show modal else show modal and set cookie
-            if (document.cookie.indexOf("modalShown=true") >= 0) {
-                // cookie exists, do nothing
-            } else {
-                // cookie doesn't exist, show modal
-                var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
-                    keyboard: false
-                })
-                myModal.show()
-            }
+        function welcomeFreshers() {
+            var confettiSettings = { target: 'my-canvas' };
+            var confetti = new ConfettiGenerator(confettiSettings);
+            confetti.render();
+
+            setTimeout(() => {
+                confetti.clear();  // Stops the confetti.
+            }, 15000); // 15 seconds
         }
-        setModalCookie = function() {
-            // set cookie to hide modal next time
+
+        window.onload = function() {
+            if (document.cookie.indexOf("modalShown=true") < 0) {
+                var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {keyboard: false});
+                myModal.show();
+            }
+            welcomeFreshers();
+        };
+
+        function setModalCookie() {
             document.cookie = "modalShown=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
         }
     </script>
