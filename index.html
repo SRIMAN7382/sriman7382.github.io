@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/confetti@1.3.1/dist/confetti.min.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KYXBHVSK4B"></script>
     <script>
@@ -25,6 +26,112 @@
         gtag('js', new Date());
         gtag('config', 'G-KYXBHVSK4B');
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes liquidRise {
+            0%, 100% { height: 0; }
+            50% { height: 70%; }
+        }
+        @keyframes bubbleRise {
+            0% { transform: translateY(100%) scale(0); opacity: 0; }
+            50% { transform: translateY(-50%) scale(1); opacity: 1; }
+            100% { transform: translateY(-100%) scale(0); opacity: 0; }
+        }
+        @keyframes confettiFall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(720deg); }
+        }
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 5px #ff4081, 0 0 10px #ff4081, 0 0 15px #ff4081; }
+            50% { text-shadow: 0 0 10px #3f51b5, 0 0 20px #3f51b5, 0 0 30px #3f51b5; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        .birthday-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .birthday-modal.show {
+            display: flex; /* Shown when 'show' class is added */
+        }
+        .birthday-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: float 3s ease-in-out infinite;
+            max-width: 90%;
+            width: 400px;
+        }
+        .birthday-card h2 {
+            color: #df8ba7;
+            font-size: 36px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            animation: textGlow 2s ease-in-out infinite;
+        }
+        .birthday-card p {
+            color: #333;
+            font-size: 18px;
+            position: relative;
+            z-index: 2;
+        }
+        .liquid {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(45deg, #ee5588, #8f9adb, #88dad1, #ff9800);
+            animation: liquidRise 10s ease-in-out infinite;
+        }
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: bubbleRise 4s ease-in-out infinite;
+        }
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: rgb(225, 125, 225);
+            animation: confettiFall 4s linear infinite;
+        }
+        @media (max-width: 600px) {
+            .birthday-card {
+                padding: 30px;
+            }
+            .birthday-card h2 {
+                font-size: 28px;
+            }
+            .birthday-card p {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -43,10 +150,10 @@
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item dropdown me-lg-5">
-                            <a class="nav-link dropdown-toggle btn btn-primary text-white" href="https://docs.google.com/forms/d/e/1FAIpQLSfkD17LJ-flF0bp2K0j-fFRoT7Tp2WylV--S4ZoL-2hbBKjcg/viewform?usp=sf_link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle btn btn-primary text-white" href="#" id="materialsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Materials
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu" aria-labelledby="materialsDropdown">
                                 <li><a class="dropdown-item" href="semester.html">Semester 1</a></li>
                                 <li><a class="dropdown-item" href="semester.html">Semester 2</a></li>
                                 <li><a class="dropdown-item" href="sem3.html">Semester 3</a></li>
@@ -59,38 +166,25 @@
                         <li class="nav-item me-lg-5">
                             <a class="nav-link active" href="Calender.html" target="_blank">Main Calendar 2024-25</a>
                         </li>
-                        <!-- Uncomment the below if needed -->
-                        <!-- <li class="nav-item me-lg-5">
-                            <a class="nav-link btn text-bg-primary text-white border-2" href="cgpa.html" target="_blank">Cgpa Calculator</a>
-                        </li> -->
-                        <!-- <li class="nav-item me-lg-5">
-                            <a class="nav-link active" aria-current="page" href="https://sas.sastra.edu/hallplan/index.php">END SEMESTER HALL PLAN</a>
-                        </li> -->
-                        <!-- <li class="nav-item dropdown me-lg-5">
-                            <a class="nav-link active" href="https://sastra.edu/cia1/soc/soc_master.html" target="_blank">HALL PLAN</a>
-                        </li> -->
                         <li class="nav-item dropdown me-lg-5">
-                            <a class="nav-link dropdown-toggle btn btn-primary text-white" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle btn btn-primary text-white" href="#" id="hallPlanDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Hall Plan CIA-II
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu" aria-labelledby="hallPlanDropdown">
                                 <li><a class="dropdown-item" href="https://sastra.edu/cia2/soc/soc_master.html" target="_blank">SOC</a></li>
                                 <li><a class="dropdown-item" href="https://sastra.edu/cia2/seee/seee_master.html" target="_blank">SEE</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown me-lg-5">
-                            <a class="nav-link dropdown-toggle btn btn-success text-white" href="https://docs.google.com/forms/d/e/1FAIpQLSfkD17LJ-flF0bp2K0j-fFRoT7Tp2WylV--S4ZoL-2hbBKjcg/viewform?usp=sf_link" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle btn btn-success text-white" href="#" id="utilitiesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Utilities
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu" aria-labelledby="utilitiesDropdown">
                                 <li><a class="dropdown-item" href="https://unitastic.netlify.app/sgpa" target="_blank">SGPA Calculator</a></li>
                                 <li><a class="dropdown-item" href="https://unitastic.netlify.app/externals" target="_blank">External Marks Calculator</a></li>
                                 <li><a class="dropdown-item" href="https://unitastic.netlify.app/attendance" target="_blank">Estimate Class Skips</a></li>
                             </ul>
                         </li>
-                        <!-- <li class="nav-item me-lg-5 mt-lg-0 mt-3">
-                            <a class="nav-link btn text-white" href="About us/index.html">About Us</a>
-                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -145,7 +239,6 @@
             </div>
         </div>
     </div>
-    <div></div>
 
     <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
     <script>
@@ -186,47 +279,55 @@
         <p>Content curated from <a href="https://instagram.com/materialhub_sastra">Material Hub</a>.</p>
     </footer>
 
-    <!-- Uncomment the below if needed -->
-    <!-- <div class="whatsapp-btn bg-white p-3 rounded-circle animate__animated animate__tada animate__delay-4s" style="position: fixed; bottom: 20px; right: 20px; cursor: pointer;" onclick="window.location.href='https://wa.me/917702150488'">
-        <img src="images/WhatsApp.svg" width="40">
-    </div> -->
-    
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">TERMS OF SERVICE</h1>
-                </div>
-                <div class="modal-body">
-                    Last Edit: 19/02/2023<br>
-                    We had updated our terms of service.
-                    This Website is not officially approved or organized by the university.
-                    Material Base is not responsible if any INCORRECT CONTENT is provided in materials. If any INCORRECT CONTENT is found, please report it immediately.<br>
-                    <p>Read all terms of service before accepting!!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="setModalCookie()">Accept</button>
-                </div>
-            </div>
+    <!-- Birthday Modal -->
+    <div class="birthday-modal" id="birthday-modal">
+        <div class="birthday-card">
+            <div class="liquid"></div>
+            <h2>Happy Birthday!</h2>
+            <p>Happy Birthday To Our Amazing Admin <span style="font-weight: bold; color: #409cff;">Tagore</span>! 🎉🎂</p>
+            <div class="bubble" style="left: 10%; width: 20px; height: 20px; animation-delay: 0s;"></div>
+            <div class="bubble" style="left: 30%; width: 15px; height: 15px; animation-delay: 0.5s;"></div>
+            <div class="bubble" style="left: 50%; width: 25px; height: 25px; animation-delay: 1s;"></div>
+            <div class="bubble" style="left: 70%; width: 18px; height: 18px; animation-delay: 1.5s;"></div>
+            <div class="bubble" style="left: 90%; width: 22px; height: 22px; animation-delay: 2s;"></div>
         </div>
     </div>
+
+    <!-- Confetti -->
+    <div id="confetti-container"></div>
+
     <script>
         window.onload = function () {
-            // if cookie exists, don't show modal else show modal and set cookie
-            if (document.cookie.indexOf('modalShown=true') == -1) {
-                // cookie doesn't exist, show modal
-                var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
-                    keyboard: false
-                });
-                myModal.show();
+            const birthdayModal = document.getElementById('birthday-modal');
+            const confettiContainer = document.getElementById('confetti-container');
+        
+            // Show the birthday modal
+            birthdayModal.classList.add('show'); // Use class to show modal
+        
+            // Close dropdowns when the modal is displayed
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+                dropdownToggle.classList.remove('show'); // Close dropdowns
+            });
+        
+            // Create and trigger confetti effect
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.backgroundColor = ['#ff4081', '#3f51b5', '#009688', '#ff9800', '#8bc34a'][Math.floor(Math.random() * 5)];
+                confettiContainer.appendChild(confetti);
             }
-        }
-
-        function setModalCookie() {
-            // set cookie to hide modal next time
-            document.cookie = "modalShown=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
-        }
+        
+            // Hide the modal and remove confetti after 3 seconds
+            setTimeout(function() {
+                birthdayModal.classList.remove('show'); // Use class to hide modal
+                confettiContainer.innerHTML = '';
+            }, 3000);
+        };
+        
     </script>
 </body>
 
