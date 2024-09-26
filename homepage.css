@@ -1,82 +1,33 @@
 html,body {
-    height: 100%;
+  height: 100%;
 }
 .landing {
-    height: 100%;
-    background-image: url("images/20230209_210517.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  height: 100%;
+  background-image: url("images/20230209_210517.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .manya-logo {
-    width: 25%;
+  width: 25%;
 }
 
 @media only screen and (max-width: 768px) {
-    .landing {
-        height: 170%;
-    }
-    .manya-logo {
-        width: 50%;
-    }
+  .landing {
+      height: 170%;
+  }
+  .manya-logo {
+      width: 50%;
+  }
 }
 /* confetti.css */
-.birthday-notification {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    width: 300px;
-    height: 200px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    animation: slideIn 2s forwards;
-  }
-  
-  .birthday-card {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .poppers {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .popper {
-    width: 20px;
-    height: 20px;
-    background-color: #fff;
-    border-radius: 50%;
-    animation: popperAnimation 2s infinite;
-  }
-  
-  @keyframes slideIn {
-    0% {
-      transform: translateY(-100%);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes popperAnimation {
-    0% {
-      transform: scale(0.5);
-    }
-    50% {
-      transform: scale(1.5);
-    }
-    100% {
-      transform: scale(0.5);
-    }
-  }
+.confetti {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
